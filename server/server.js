@@ -20,7 +20,10 @@ app.get("/",(req,res)=>{
     res.json('hello world')
 })
 
-mongoose.connect("mongodb+srv://Akhil_Polisetty:Itd7ezvu6LSm55U1@cluster0.yikmr2e.mongodb.net/Deploying?retryWrites=true&w=majority&appName=Cluster0")
+const conn=process.env.MONGO
+
+mongoose
+  .connect(conn)
   .then(() => console.log("Connected to MongoDB"))
   .catch((err) => console.error("MongoDB connection error:", err));
 
