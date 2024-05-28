@@ -10,22 +10,20 @@ const app = express();
 app.use(
   cors({
     origin: ["https://mern-dep-client.vercel.app"],
-    methods: ["GET", "PUT", "POST", "DELETE"],
+    methods: ["GET","POST"],
     credentials: true,
   })
 );
 app.use(express.json());
 
-app.get('/',(req,res)=>{
+app.get("/",(req,res)=>{
     res.json('hello world')
 })
 
-const conn=process.env.MONGO
-
-mongoose
-  .connect(conn)
+mongoose.connect("mongodb+srv://Akhil_Polisetty:Itd7ezvu6LSm55U1@cluster0.yikmr2e.mongodb.net/Deploying?retryWrites=true&w=majority&appName=Cluster0")
   .then(() => console.log("Connected to MongoDB"))
   .catch((err) => console.error("MongoDB connection error:", err));
+
 
 
   app.post("/register", async (req, res) => {
