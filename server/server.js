@@ -51,32 +51,6 @@ mongoose
     }
   });
 
-  app.post("/login", async (req, res) => {
-    try {
-      const {email,password } = req.body;
-
-      if (!phone || !password) {
-        return res
-          .status(201)
-          .json({ message: "Phone and password are required" });
-      }
-  
-      const existingUser = await DuserModel.findOne({ email});
-      console.log("the user is ", existingUser);
-      if (!existingUser) {
-        return res.status(201).json({ message: "User not found" });
-      }
-  
-      if (existingUser.password!==password) {
-        return res.status(201).json({ message: "Invalid Password" });
-      }
-
-      return res.status(200).json({ message: "Logged in Succesful"});
-    } catch (error) {
-      console.log("Error Occurred at server: ", error);
-      res.status(500).json({ message: "Internal Server Error" });
-    }
-  });
 
   app.listen(3001, () => {
     console.log("the server is running fine");
