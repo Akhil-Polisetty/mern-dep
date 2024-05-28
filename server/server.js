@@ -9,7 +9,7 @@ dotenv.config()
 const app = express();
 app.use(
   cors({
-    origin: "https://mern-dep-client.vercel.app",
+    origin: ["https://mern-dep-client.vercel.app"],
     methods: ["GET", "PUT", "POST", "DELETE"],
     credentials: true,
   })
